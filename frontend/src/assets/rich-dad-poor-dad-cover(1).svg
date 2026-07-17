@@ -1,0 +1,8 @@
+<svg width="800" height="1200" viewBox="0 0 800 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1200" rx="40" fill="#065F46" />
+  <rect x="56" y="120" width="688" height="960" rx="32" fill="#047857" />
+  <text x="400" y="500" text-anchor="middle" fill="#ECFDF5" font-family="Inter, sans-serif" font-size="52" font-weight="800">Rich Dad</text>
+  <text x="400" y="570" text-anchor="middle" fill="#ECFDF5" font-family="Inter, sans-serif" font-size="52" font-weight="800">Poor Dad</text>
+  <text x="400" y="680" text-anchor="middle" fill="#A7F3D0" font-family="Inter, sans-serif" font-size="24" letter-spacing="0.18em">ROBERT KIYOSAKI</text>
+  <rect x="200" y="780" width="400" height="20" rx="10" fill="#ECFDF5" />
+</svg>

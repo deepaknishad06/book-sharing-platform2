@@ -1,0 +1,28 @@
+<svg width="800" height="1200" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark orange background -->
+  <rect width="800" height="1200" fill="#B45309"/>
+  
+  <!-- Lighter orange accent area -->
+  <rect y="0" width="800" height="300" fill="#D97706"/>
+  
+  <!-- Large yellow circle in center -->
+  <circle cx="400" cy="500" r="200" fill="#FCD34D"/>
+  
+  <!-- Decorative circles around center -->
+  <circle cx="250" cy="350" r="120" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="550" cy="350" r="120" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="250" cy="650" r="120" fill="#F59E0B" opacity="0.8"/>
+  <circle cx="550" cy="650" r="120" fill="#F59E0B" opacity="0.8"/>
+  
+  <!-- Center circle -->
+  <circle cx="400" cy="500" r="50" fill="#D97706"/>
+  
+  <!-- Title -->
+  <text x="400" y="950" text-anchor="middle" font-family="Georgia, serif" font-size="80" font-weight="bold" fill="white">Ikigai</text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="1020" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#FCD34D">Japanese Secret to Happiness</text>
+  
+  <!-- Authors -->
+  <text x="400" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#FEF3C7">Hector Garcia and Francesc Miralles</text>
+</svg>

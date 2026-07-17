@@ -1,0 +1,11 @@
+<svg width="800" height="1200" viewBox="0 0 800 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1200" rx="40" fill="#2D2C39" />
+  <rect x="56" y="120" width="688" height="960" rx="32" fill="#3F3D51" />
+  <text x="400" y="500" text-anchor="middle" fill="#F7F0D9" font-family="Inter, sans-serif" font-size="52" font-weight="800">Sapiens:</text>
+  <text x="400" y="570" text-anchor="middle" fill="#F7F0D9" font-family="Inter, sans-serif" font-size="40" font-weight="700">A Brief History</text>
+  <text x="400" y="640" text-anchor="middle" fill="#F7F0D9" font-family="Inter, sans-serif" font-size="40" font-weight="700">of Humankind</text>
+  <text x="400" y="740" text-anchor="middle" fill="#BFB7A1" font-family="Inter, sans-serif" font-size="24" letter-spacing="0.18em">YUVAL NOAH HARARI</text>
+  <rect x="180" y="840" width="440" height="24" rx="12" fill="#F7F0D9" />
+  <circle cx="230" cy="360" r="90" fill="#BFB7A1" opacity="0.3" />
+  <path d="M490 360C490 295 445 250 380 250C315 250 270 295 270 360C270 425 315 470 380 470C445 470 490 425 490 360Z" fill="#F7F0D9" opacity="0.15" />
+</svg>

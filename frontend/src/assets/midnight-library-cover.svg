@@ -1,0 +1,13 @@
+<svg width="800" height="1200" viewBox="0 0 800 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1200" rx="40" fill="#0B2545" />
+  <rect x="56" y="180" width="688" height="900" rx="32" fill="#142D55" />
+  <path d="M56 220H744" stroke="#70AFFF" stroke-width="8" />
+  <path d="M56 340H744" stroke="#70AFFF" stroke-width="6" />
+  <text x="400" y="520" text-anchor="middle" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="58" font-weight="800">The Midnight</text>
+  <text x="400" y="600" text-anchor="middle" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="58" font-weight="800">Library</text>
+  <text x="400" y="700" text-anchor="middle" fill="#A1ACDB" font-family="Inter, sans-serif" font-size="28" letter-spacing="0.18em">MATT HAIG</text>
+  <rect x="80" y="780" width="640" height="16" rx="8" fill="#70AFFF" />
+  <circle cx="600" cy="360" r="72" fill="#2B4A7F" />
+  <circle cx="520" cy="320" r="28" fill="#70AFFF" />
+  <circle cx="620" cy="420" r="20" fill="#70AFFF" />
+</svg>

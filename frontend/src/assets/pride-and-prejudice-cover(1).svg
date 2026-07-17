@@ -1,0 +1,8 @@
+<svg width="800" height="1200" viewBox="0 0 800 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1200" rx="40" fill="#7C3AED" />
+  <rect x="56" y="120" width="688" height="960" rx="32" fill="#8B5CF6" />
+  <text x="400" y="500" text-anchor="middle" fill="#F3F4F6" font-family="Georgia, serif" font-size="48" font-weight="800">Pride and</text>
+  <text x="400" y="570" text-anchor="middle" fill="#F3F4F6" font-family="Georgia, serif" font-size="48" font-weight="800">Prejudice</text>
+  <text x="400" y="680" text-anchor="middle" fill="#DDD6FE" font-family="Inter, sans-serif" font-size="24" letter-spacing="0.18em">JANE AUSTEN</text>
+  <rect x="150" y="780" width="500" height="16" rx="8" fill="#F3F4F6" />
+</svg>
