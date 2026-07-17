@@ -13,37 +13,37 @@ const app = express();
 app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174"] }));
 app.use(express.json());
 
-const uploadPath = path.join(__dirname, 'uploads');
+const uploadPath = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
 }
 
-app.get('/uploads/:filename', (req, res, next) => {
+app.get("/uploads/:filename", (req, res, next) => {
   const filePath = path.join(uploadPath, req.params.filename);
   if (!fs.existsSync(filePath)) {
     return next();
   }
 
   const ext = path.extname(filePath).toLowerCase();
-  if (ext === '.pdf') {
-    res.type('application/pdf');
+  if (ext === ".pdf") {
+    res.type("application/pdf");
     return res.sendFile(filePath);
   }
 
-  const fileDescriptor = fs.openSync(filePath, 'r');
+  const fileDescriptor = fs.openSync(filePath, "r");
   const header = Buffer.alloc(4);
   fs.readSync(fileDescriptor, header, 0, 4, 0);
   fs.closeSync(fileDescriptor);
 
-  if (header.toString() === '%PDF') {
-    res.type('application/pdf');
+  if (header.toString() === "%PDF") {
+    res.type("application/pdf");
     return res.sendFile(filePath);
   }
 
   return next();
 });
 
-app.use('/uploads', express.static(uploadPath));
+app.use("/uploads", express.static(uploadPath));
 
 const seedBooks = async () => {
   const seedData = [
@@ -51,19 +51,22 @@ const seedBooks = async () => {
       title: "The Midnight Library",
       author: "Matt Haig",
       genre: "Literary Fiction",
-      summary: "A thoughtful story about choices, regret, and the books that shape our lives.",
+      summary:
+        "A thoughtful story about choices, regret, and the books that shape our lives.",
     },
     {
       title: "The Alchemist",
       author: "Paulo Coelho",
       genre: "Philosophical Fiction",
-      summary: "A young shepherd travels across the desert and discovers the meaning of following his dreams.",
+      summary:
+        "A young shepherd travels across the desert and discovers the meaning of following his dreams.",
     },
     {
       title: "The Great Gatsby",
       author: "F. Scott Fitzgerald",
       genre: "Classic Fiction",
-      summary: "A portrait of the Jazz Age and the American dream through love, loss, and ambition.",
+      summary:
+        "A portrait of the Jazz Age and the American dream through love, loss, and ambition.",
     },
     {
       title: "Quiet: The Power of Introverts",
@@ -75,49 +78,57 @@ const seedBooks = async () => {
       title: "Sapiens: A Brief History of Humankind",
       author: "Yuval Noah Harari",
       genre: "History",
-      summary: "A sweeping exploration of human history, culture, and the ideas that have shaped our species.",
+      summary:
+        "A sweeping exploration of human history, culture, and the ideas that have shaped our species.",
     },
     {
       title: "Atomic Habits",
       author: "James Clear",
       genre: "Self-help",
-      summary: "An easy and proven way to build good habits and break bad ones.",
+      summary:
+        "An easy and proven way to build good habits and break bad ones.",
     },
     {
       title: "To Kill a Mockingbird",
       author: "Harper Lee",
       genre: "Classic Fiction",
-      summary: "A gripping tale of racial injustice and childhood innocence in the American South.",
+      summary:
+        "A gripping tale of racial injustice and childhood innocence in the American South.",
     },
     {
       title: "1984",
       author: "George Orwell",
       genre: "Dystopian Fiction",
-      summary: "A dystopian social science fiction novel about totalitarian control and surveillance.",
+      summary:
+        "A dystopian social science fiction novel about totalitarian control and surveillance.",
     },
     {
       title: "Pride and Prejudice",
       author: "Jane Austen",
       genre: "Romance",
-      summary: "A romantic novel about manners, upbringing, morality, education, and marriage.",
+      summary:
+        "A romantic novel about manners, upbringing, morality, education, and marriage.",
     },
     {
       title: "Harry Potter and the Philosopher's Stone",
       author: "J.K. Rowling",
       genre: "Fantasy",
-      summary: "The first book in the Harry Potter series, following a young wizard's adventures.",
+      summary:
+        "The first book in the Harry Potter series, following a young wizard's adventures.",
     },
     {
       title: "Rich Dad Poor Dad",
       author: "Robert Kiyosaki",
       genre: "Finance",
-      summary: "A personal finance book that contrasts the mindsets of the rich and poor.",
+      summary:
+        "A personal finance book that contrasts the mindsets of the rich and poor.",
     },
     {
       title: "The Power of Habit",
       author: "Charles Duhigg",
       genre: "Self-help",
-      summary: "Why we do what we do in life and business, and how to change it.",
+      summary:
+        "Why we do what we do in life and business, and how to change it.",
       pdfUrl: "/pdfs/Power-of-Habit-Chapter-One.pdf",
     },
     {
@@ -137,7 +148,8 @@ const seedBooks = async () => {
       title: "Think and Grow Rich",
       author: "Napoleon Hill",
       genre: "Self-help",
-      summary: "A personal development and self-help book about achieving financial independence.",
+      summary:
+        "A personal development and self-help book about achieving financial independence.",
     },
   ];
 
@@ -175,7 +187,6 @@ const seedBooks = async () => {
 
   console.log("Seeded initial book collection.");
 };
-
 const startServer = async () => {
   try {
     await connectDB();
