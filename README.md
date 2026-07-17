@@ -1,42 +1,84 @@
 # Book Sharing Platform
 
-## Run the project
+A simple MERN Stack Book Sharing Platform where users can browse books, upload books, borrow books, and manage their profile.
 
-From the root folder (`Book Sharing Platform`):
+## How to Run
 
-1. Install root dependencies:
-   ```bash
-   npm install
-   ```
+Open the project folder and install dependencies:
 
-2. Start backend and frontend together:
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+```
 
-This runs both:
-- `npm run backend` → starts the backend server on `http://localhost:5000`
-- `npm run frontend` → starts the Vite app on `http://localhost:5173`
+Start both frontend and backend together:
 
-## Alternative commands
+```bash
+npm run dev
+```
 
-- Start only backend:
-  ```bash
-  npm run backend
-  ```
+This will start:
 
-- Start only frontend:
-  ```bash
-  npm run frontend
-  ```
+* Backend → `http://localhost:5000`
+* Frontend → `http://localhost:5173`
 
-## Backend requirements
+## You can also run them separately
 
-- MongoDB must be running locally at `mongodb://127.0.0.1:27017/bookstore`
-- The backend uses `backend/.env` for `MONGO_URI` and `JWT_SECRET`
+Backend:
+
+```bash
+npm run backend
+```
+
+Frontend:
+
+```bash
+npm run frontend
+```
+
+## Backend Setup
+
+Create a `.env` file inside the `backend` folder.
+
+Example:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+PORT=5000
+```
+
+If you're using MongoDB locally:
+
+```env
+MONGO_URI=mongodb://127.0.0.1:27017/bookstore
+```
+
+Or if you're using MongoDB Atlas:
+
+```env
+MONGO_URI=your_atlas_connection_string
+```
+
+## Features
+
+* User Registration & Login
+* Upload Books
+* Browse Books
+* Borrow Books
+* My Books Section
+* Search Books
+* Responsive UI
+
+## Tech Stack
+
+* React
+* Vite
+* Node.js
+* Express.js
+* MongoDB
 
 ## Notes
 
-- The Profile page handles login and registration in one page.
-- Borrowed books are stored in the backend and are visible under `My Books`.
-- The frontend proxies API requests to the backend using the Vite dev server.
+* Make sure MongoDB is running before starting the backend.
+* Don't upload your `.env` file to GitHub.
+* If you're deploying the project, use MongoDB Atlas instead of the local database.
