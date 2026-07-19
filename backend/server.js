@@ -14,8 +14,25 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
   "http://localhost:5173",
   "http://localhost:5174",
+  "https://book-sharing-platform-24ck9fry9-deep2706.vercel.app",
+  "https://book-sharing-platform-1.onrender.com",
 ].filter(Boolean);
-app.use(cors({ origin: allowedOrigins }));
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin) || /^https:\/\/.*\.vercel\.app$/i.test(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 
 const uploadPath = path.join(__dirname, "uploads");
