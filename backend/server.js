@@ -1,8 +1,8 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
 const fs = require("fs");
 const connectDB = require("./config/db");
 const Book = require("./models/Book");
@@ -10,6 +10,8 @@ const userRoutes = require("./routes/userRoutes");
 const bookRoutes = require("./routes/bookRoutes");
 
 const app = express();
+let dbConnected = false;
+
 const allowedOrigins = [
   process.env.FRONTEND_URL,
   "http://localhost:5173",
@@ -20,7 +22,11 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin) || /^https:\/\/.*\.vercel\.app$/i.test(origin)) {
+    if (
+      !origin ||
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/.*\.vercel\.app$/i.test(origin)
+    ) {
       callback(null, true);
     } else {
       callback(null, false);
@@ -32,7 +38,16 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+    res.header("Access-Control-Allow-Credentials", "true");
+    return res.sendStatus(204);
+  }
+  next();
+});
 app.use(express.json());
 
 const uploadPath = path.join(__dirname, "uploads");
@@ -212,23 +227,39 @@ const seedBooks = async () => {
 const startServer = async () => {
   try {
     await connectDB();
+    dbConnected = true;
     console.log("✅ BINGO! MongoDB Atlas Connected Successfully!");
     await seedBooks();
-
-    app.use("/api/auth", userRoutes);
-    app.use("/api", bookRoutes);
-
-    app.get("/", (req, res) => {
-      res.send({ message: "Book Sharing Platform API is running" });
-    });
-
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   } catch (err) {
-    console.log("❌ Connection Error:");
+    console.log(
+      "⚠️ MongoDB unavailable; starting server without database access.",
+    );
     console.error(err.message);
-    process.exit(1);
   }
+
+  app.use((req, res, next) => {
+    if (
+      req.path.startsWith("/api") &&
+      !dbConnected &&
+      req.method !== "OPTIONS"
+    ) {
+      return res.status(503).json({
+        message:
+          "Database unavailable. Please configure a reachable MongoDB connection.",
+      });
+    }
+    next();
+  });
+
+  app.use("/api/auth", userRoutes);
+  app.use("/api", bookRoutes);
+
+  app.get("/", (req, res) => {
+    res.send({ message: "Book Sharing Platform API is running" });
+  });
+
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
 };
 
 startServer();
